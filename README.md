@@ -1,6 +1,7 @@
 # PDF Tools
 
 A collection of tools written in Python for manipulating PDF files.
+
 Created by [Juan Ignacio Causse](mailto:juanignaciocausse@gmail.com).
 
 ---
