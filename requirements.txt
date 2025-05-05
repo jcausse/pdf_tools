@@ -1,1 +1,3 @@
 PyPDF3
+PyQt6==6.4.2
+pyqt6-tools

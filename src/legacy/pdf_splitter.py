@@ -1,8 +1,7 @@
 from PyPDF3 import PdfFileReader, PdfFileWriter
 import os
-from typing import Generator, Callable
-
-PROMPT_STR = '> '
+from typing import Callable
+from typing import Generator
 
 class OutputFile:
     def __init__(self, path: str, name: str, page_interval: tuple[int, int]):
@@ -24,21 +23,6 @@ class OutputFile:
     
     def __del__(self):
         self.stream.close()
-
-def intro() -> str:
-    """
-    Prints the intro message and prompts the user for a path to the directory containing the PDF files they want to split.
-    If the user presses enter, the current directory is used.
-    
-    Returns:
-        str: The path to the directory containing the PDF files
-    """
-    print('PDF File Splitter')
-    print('Enter the path to the directory containing the PDF files you want to split,\nor press enter to use the current directory.')
-    path = input(PROMPT_STR)
-    if path == '':
-        path = '.'
-    return path
 
 def list_pdf_files(directory_path: str) -> (list[str] | None):
     """
@@ -62,6 +46,23 @@ def list_pdf_files(directory_path: str) -> (list[str] | None):
             pdf_files.append(file)
     
     return pdf_files
+
+PROMPT_STR = '> '
+
+def intro() -> str:
+    """
+    Prints the intro message and prompts the user for a path to the directory containing the PDF files they want to split.
+    If the user presses enter, the current directory is used.
+    
+    Returns:
+        str: The path to the directory containing the PDF files
+    """
+    print('PDF File Splitter')
+    print('Enter the path to the directory containing the PDF files you want to split,\nor press enter to use the current directory.')
+    path = input(PROMPT_STR)
+    if path == '':
+        path = '.'
+    return path
 
 def get_int(prompt: str, error_msg: str, min: int, max: int) -> int:
     """
